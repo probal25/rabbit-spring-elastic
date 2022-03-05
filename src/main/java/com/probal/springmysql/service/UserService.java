@@ -2,23 +2,36 @@ package com.probal.springmysql.service;
 
 import com.probal.springmysql.model.User;
 import com.probal.springmysql.repository.UserRepo;
+import com.probal.springmysql.service.publisher.UserPublisherImpl;
+import com.probal.springmysql.utill.CustomMessage;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 
 @Service
+@Slf4j
 public class UserService {
 
     private final UserRepo userRepo;
+    private final UserPublisherImpl userConsumer;
 
     @Autowired
-    public UserService(UserRepo userRepo) {
+    public UserService(UserRepo userRepo, UserPublisherImpl userConsumer) {
         this.userRepo = userRepo;
+        this.userConsumer = userConsumer;
     }
 
     public void saveUser(User user) {
-        userRepo.save(user);
+        try {
+        userRepo.saveAndFlush(user);
+        CustomMessage userCustomMessage = new CustomMessage(user);
+        userConsumer.publishMessage(userCustomMessage);
+        } catch (Exception e) {
+            log.error(e.getMessage());
+            e.printStackTrace();
+        }
     }
 
     public User findUserById(Long id) {
@@ -32,4 +45,5 @@ public class UserService {
     public void saveUserList(List<User> users) {
         userRepo.saveAll(users);
     }
+
 }
