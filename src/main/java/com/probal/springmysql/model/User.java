@@ -6,6 +6,7 @@ import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
 import java.io.Serializable;
+import java.util.Date;
 
 @Data
 @Entity
@@ -24,4 +25,15 @@ public class User {
 
     @Column(name = "user_pass")
     private String userPassword;
+
+    @Column(name = "user_email")
+    private String userEmail;
+
+    @Column(name = "user_number")
+    private Integer userNumber;
+
+    @Column(name = "createdDate")
+    private Date createdDate;
+
+
 }

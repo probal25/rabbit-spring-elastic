@@ -1,6 +1,6 @@
-package com.probal.springmysql.config;
+package com.probal.springmysql.producer.config;
 
-import com.probal.springmysql.helper.MQConfigProperties;
+import com.probal.springmysql.producer.helper.MQConfigProperties;
 import org.springframework.amqp.core.*;
 import org.springframework.amqp.rabbit.connection.ConnectionFactory;
 import org.springframework.amqp.rabbit.core.RabbitTemplate;

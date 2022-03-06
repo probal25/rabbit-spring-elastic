@@ -1,8 +1,8 @@
-package com.probal.springmysql.service.publisher;
+package com.probal.springmysql.producer.publisher;
 
-import com.probal.springmysql.helper.IPublisher;
-import com.probal.springmysql.helper.MQConfigProperties;
-import com.probal.springmysql.utill.CustomMessage;
+import com.probal.springmysql.producer.helper.IPublisher;
+import com.probal.springmysql.producer.helper.MQConfigProperties;
+import com.probal.springmysql.producer.utill.CustomMessage;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.amqp.rabbit.core.RabbitTemplate;
 import org.springframework.beans.factory.annotation.Autowired;

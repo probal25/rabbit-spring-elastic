@@ -2,8 +2,8 @@ package com.probal.springmysql.service;
 
 import com.probal.springmysql.model.User;
 import com.probal.springmysql.repository.UserRepo;
-import com.probal.springmysql.service.publisher.UserPublisherImpl;
-import com.probal.springmysql.utill.CustomMessage;
+import com.probal.springmysql.producer.publisher.UserPublisherImpl;
+import com.probal.springmysql.producer.utill.CustomMessage;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;

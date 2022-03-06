@@ -1,4 +1,4 @@
-package com.probal.springmysql.utill;
+package com.probal.springmysql.producer.utill;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;

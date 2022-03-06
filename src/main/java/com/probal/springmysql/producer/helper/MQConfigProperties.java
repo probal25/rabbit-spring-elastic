@@ -1,4 +1,4 @@
-package com.probal.springmysql.helper;
+package com.probal.springmysql.producer.helper;
 
 public final class MQConfigProperties {
 
