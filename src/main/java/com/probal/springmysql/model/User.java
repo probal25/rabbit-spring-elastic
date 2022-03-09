@@ -1,5 +1,6 @@
 package com.probal.springmysql.model;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -33,6 +34,7 @@ public class User {
     private Integer userNumber;
 
     @Column(name = "createdDate")
+    @JsonFormat(pattern = "yyyy-MM-dd")
     private Date createdDate;
 
 

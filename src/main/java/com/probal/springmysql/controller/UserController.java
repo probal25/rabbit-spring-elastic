@@ -37,4 +37,10 @@ public class UserController {
     public void saveAllUser(@RequestBody List<User> users) {
         service.saveUserList(users);
     }
+
+    @GetMapping("/send_to_mq")
+    public void sendAllUserDataToMessageQueue() {
+        service.sendAllUserDataToMessageQueue();
+    }
+
 }

@@ -46,4 +46,16 @@ public class UserService {
         userRepo.saveAll(users);
     }
 
+    public void sendAllUserDataToMessageQueue() {
+        List<User> userList = userRepo.findAll();
+        for (User user : userList) {
+            try {
+                CustomMessage userCustomMessage = new CustomMessage(user);
+                userConsumer.publishMessage(userCustomMessage);
+            } catch (Exception e) {
+                log.error(e.getMessage());
+                e.printStackTrace();
+            }
+        }
+    }
 }
