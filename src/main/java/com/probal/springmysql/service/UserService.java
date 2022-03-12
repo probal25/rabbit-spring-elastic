@@ -15,19 +15,19 @@ import java.util.List;
 public class UserService {
 
     private final UserRepo userRepo;
-    private final UserPublisherImpl userConsumer;
+    private final UserPublisherImpl userPublisher;
 
     @Autowired
-    public UserService(UserRepo userRepo, UserPublisherImpl userConsumer) {
+    public UserService(UserRepo userRepo, UserPublisherImpl userPublisher) {
         this.userRepo = userRepo;
-        this.userConsumer = userConsumer;
+        this.userPublisher = userPublisher;
     }
 
     public void saveUser(User user) {
         try {
-        userRepo.saveAndFlush(user);
-        CustomMessage userCustomMessage = new CustomMessage(user);
-        userConsumer.publishMessage(userCustomMessage);
+            userRepo.saveAndFlush(user);
+            CustomMessage userCustomMessage = new CustomMessage(user);
+            userPublisher.publishMessage(userCustomMessage);
         } catch (Exception e) {
             log.error(e.getMessage());
             e.printStackTrace();
@@ -51,7 +51,7 @@ public class UserService {
         for (User user : userList) {
             try {
                 CustomMessage userCustomMessage = new CustomMessage(user);
-                userConsumer.publishMessage(userCustomMessage);
+                userPublisher.publishMessage(userCustomMessage);
             } catch (Exception e) {
                 log.error(e.getMessage());
                 e.printStackTrace();
